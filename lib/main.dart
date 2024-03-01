@@ -35,10 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 200,
+        leadingWidth: 420,
         backgroundColor: AppColors.scaffoldColor,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 10),
           child: SizedBox(
             height: 200,
             child: Image.asset(

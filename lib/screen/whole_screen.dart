@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'sections/first_sections.dart';
+
 class WholeScreen extends StatefulWidget {
   const WholeScreen({super.key});
 
@@ -11,9 +13,7 @@ class _WholeScreenState extends State<WholeScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        
-      ],
+      children: [FirstSection()],
     );
   }
 }
