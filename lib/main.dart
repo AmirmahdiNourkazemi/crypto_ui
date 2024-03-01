@@ -73,22 +73,49 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {},
               child: const Text(
                 'Services',
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(
+                    fontFamily: 'CH',
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
               )),
           TextButton(
               onPressed: () {},
               child: const Text(
                 'Price',
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(
+                    fontFamily: 'CH',
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
               )),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'News',
+              style: TextStyle(
+                  fontFamily: 'CH',
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.only(right: 40),
-            child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'News',
-                  style: TextStyle(fontSize: 14, color: Colors.white),
-                )),
+            padding: const EdgeInsets.only(right: 70),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.scaffoldColor,
+                  side: const BorderSide(color: AppColors.secondaryColor)),
+              child: const Text(
+                'Get started',
+                style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.secondaryColor,
+                    fontFamily: 'CH',
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
           )
         ],
       ),
