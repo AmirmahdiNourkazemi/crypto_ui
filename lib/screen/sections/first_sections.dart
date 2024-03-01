@@ -1,4 +1,5 @@
 import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/screen/widget/text_transform.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/text_reveal.dart';
@@ -46,7 +47,7 @@ class _FirstSectionState extends State<FirstSection>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 800,
       decoration: const BoxDecoration(color: AppColors.scaffoldColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,7 +55,7 @@ class _FirstSectionState extends State<FirstSection>
           Expanded(
             flex: 5,
             child: Padding(
-              padding: const EdgeInsets.only(left: 80, top: 60),
+              padding: const EdgeInsets.only(left: 90, top: 200),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -67,7 +68,7 @@ class _FirstSectionState extends State<FirstSection>
                       'Trusted Crypto',
                       style: TextStyle(
                           fontFamily: 'CH',
-                          fontSize: 25,
+                          fontSize: 45,
                           color: Colors.white,
                           fontWeight: FontWeight.w800),
                     ),
@@ -81,7 +82,7 @@ class _FirstSectionState extends State<FirstSection>
                       'Preservation',
                       style: TextStyle(
                           fontFamily: 'CH',
-                          fontSize: 25,
+                          fontSize: 45,
                           color: Colors.white,
                           fontWeight: FontWeight.w800),
                     ),
@@ -89,11 +90,11 @@ class _FirstSectionState extends State<FirstSection>
                   const SizedBox(
                     height: 20,
                   ),
-                  TextReveal(
+                  TextTransform(
                     maxHeight: 100,
                     controller: controller,
                     textOpacityAnimation: textOpacityAnimation,
-                    textRevealAnimation: textRevealAnimation,
+                    //textRevealAnimation: textRevealAnimation,
                     child: const Text(
                       'Lorem ipsum dolor sit amet consectetur. Duis morbi scelerisque lectus sodales rhoncus.',
                       style: TextStyle(
@@ -149,7 +150,7 @@ class _FirstSectionState extends State<FirstSection>
               ),
             ),
           ),
-          Expanded(flex: 2, child: FirstPageImage())
+          const Expanded(flex: 9, child: FirstPageImage())
         ],
       ),
     );
@@ -210,11 +211,12 @@ class _FirstPageImageState extends State<FirstPageImage>
           ],
         );
       },
-      child: Image.asset(
-        'assets/images/Frame 27.png',
-        width: 400,
-        height: 500,
-        fit: BoxFit.contain,
+      child: Transform.scale(
+        scale: 1,
+        child: Image.asset(
+          'assets/images/Frame 27.png',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
