@@ -1,4 +1,6 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
+import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +19,7 @@ class _ThirdSectionState extends State<ThirdSection>
   late Animation<double> subTextOpacityAnimation;
   late Animation<double> subImageRevealAnimation;
   late Animation<Offset> offsetImage;
+  late Animation<Offset> transform;
 
   @override
   void initState() {
@@ -47,6 +50,9 @@ class _ThirdSectionState extends State<ThirdSection>
     offsetImage =
         Tween<Offset>(begin: const Offset(-10, 0), end: const Offset(0, 0))
             .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+    transform =
+        Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0))
+            .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
 
     subImageRevealAnimation = Tween<double>(begin: 0.0, end: 90.0).animate(
         CurvedAnimation(
@@ -54,6 +60,12 @@ class _ThirdSectionState extends State<ThirdSection>
             curve: const Interval(0.70, 1.0, curve: Curves.easeOut)));
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
   }
 
   @override
@@ -74,8 +86,7 @@ class _ThirdSectionState extends State<ThirdSection>
         }
         return Row(
           children: [
-            Expanded(
-                child: AnimatedBuilder(
+            AnimatedBuilder(
               animation: offsetImage,
               builder: (context, child) {
                 if (state.scrollOffsetValue > 800.0 &&
@@ -86,15 +97,125 @@ class _ThirdSectionState extends State<ThirdSection>
                   // print('inside reverse:${state.scrollOffsetValue}');
                   controller.reverse();
                 }
-                return SlideTransition(
+                return Flexible(
+                  flex: 1,
+                  child: SlideTransition(
                     position: offsetImage,
-                    child: Image.asset('assets/images/Frame 29.png'));
+                    child: Image.asset(
+                      'assets/images/Frame 29.png',
+                    ),
+                  ),
+                );
               },
-            )),
-            Expanded(
-                child: Column(
-              children: [],
-            )),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.1,
+            ),
+            Flexible(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AnimatedBuilder(
+                    animation: textRevealAnimation,
+                    builder: (context, child) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextReveal(
+                            maxHeight: 50,
+                            controller: controller,
+                            child: const Text(
+                              'About us',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'CH',
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.secondaryColor,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextReveal(
+                            maxHeight: 50,
+                            controller: controller,
+                            child: const Text(
+                              'Crypto Saving Base',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: 'CH',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          TextReveal(
+                            maxHeight: 50,
+                            controller: controller,
+                            child: const Text(
+                              'of Your Choice',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: 'CH',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          AnimatedBuilder(
+                            animation: subTextOpacityAnimation,
+                            builder: (context, child) {
+                              return SlideTransition(
+                                position: transform,
+                                // opacity: subTextOpacityAnimation,
+                                child: const Text(
+                                  'Lorem ipsum dolor sit amet. Vel blanditiis modi eos accusamus cupiditate ut sint quaerat. Sit autem rerum qui vitae dolores cum eveniet eveniet vel sunt sunt eum reiciendis rerum aut voluptatem minus.',
+                                  style: TextStyle(
+                                    fontFamily: 'CH',
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w200,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          TextReveal(
+                            maxHeight: 50,
+                            controller: controller,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: const Size(100, 50),
+                                backgroundColor: AppColors.scaffoldColor,
+                                side: const BorderSide(
+                                  width: 0.5,
+                                  color: AppColors.secondaryColor,
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'Learn More',
+                                style: TextStyle(
+                                    fontFamily: 'CH',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w200,
+                                    color: AppColors.secondaryColor),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
           ],
         );
       },

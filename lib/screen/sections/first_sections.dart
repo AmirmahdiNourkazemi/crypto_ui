@@ -45,6 +45,12 @@ class _FirstSectionState extends State<FirstSection>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 800,

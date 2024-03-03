@@ -27,6 +27,12 @@ class _SecondScreenState extends State<SecondScreen>
     super.initState();
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+  }
+
   late AnimationController controller;
   @override
   Widget build(BuildContext context) {
