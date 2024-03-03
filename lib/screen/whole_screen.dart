@@ -1,4 +1,5 @@
 import 'package:crypto_ui_web/screen/sections/second_section.dart';
+import 'package:crypto_ui_web/screen/sections/third_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,12 +31,10 @@ class _WholeScreenState extends State<WholeScreen> {
   Widget build(BuildContext context) {
     return ListView(
       controller: controller,
-      children: [
+      children:  const[
         FirstSection(),
         SecondScreen(),
-        SizedBox(
-          height: 900,
-        )
+        ThirdSection(),
       ],
     );
   }

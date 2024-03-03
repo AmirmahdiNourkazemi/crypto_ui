@@ -45,7 +45,7 @@ class _SecondScreenState extends State<SecondScreen>
           ),
           child: BlocBuilder<DisplayOffset, ScrollOffset>(
             buildWhen: (previous, current) {
-              if ((current.scrollOffsetValue >= 900 &&
+              if ((current.scrollOffsetValue >= 800 &&
                       current.scrollOffsetValue <= 1200) ||
                   controller.isAnimating) {
                 return true;
@@ -55,13 +55,13 @@ class _SecondScreenState extends State<SecondScreen>
             },
             builder: (context, state) {
               //  print('all:${state.scrollOffsetValue}');
-              if (state.scrollOffsetValue > 900.0 &&
+              if (state.scrollOffsetValue > 800.0 &&
                   state.scrollOffsetValue > 1200.0) {
                 // print('inside forward:${state.scrollOffsetValue}');
                 controller.forward();
               } else {
                 // print('inside reverse:${state.scrollOffsetValue}');
-                controller..reverse();
+                controller.reverse();
               }
               return const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

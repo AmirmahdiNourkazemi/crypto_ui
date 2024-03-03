@@ -77,7 +77,7 @@ class _ImageRevealState extends State<ImageReveal>
         child: BlocBuilder<DisplayOffset, ScrollOffset>(
           buildWhen: (previous, current) {
             //print(current.scrollOffsetValue);
-            if ((current.scrollOffsetValue >= 920 &&
+            if ((current.scrollOffsetValue >= 800 &&
                     current.scrollOffsetValue <= 1200) ||
                 controller.isAnimating) {
               return true;
@@ -86,7 +86,7 @@ class _ImageRevealState extends State<ImageReveal>
             }
           },
           builder: (context, state) {
-            if (state.scrollOffsetValue >= (1000)) {
+            if (state.scrollOffsetValue >= (940)) {
               controller.forward();
             } else {
               // print('inside reverse');
@@ -97,15 +97,11 @@ class _ImageRevealState extends State<ImageReveal>
               animation: imageOpacity,
               builder: (context, child) {
                 return ScaleTransition(
-                  //duration: const Duration(milliseconds: 100),
                   scale: imageOpacity,
-                  //curve: Curves.easeOutSine,
-                  child: FadeTransition(
-                      opacity: imageOpacity,
-                      child: Image.asset(
-                        widget.image,
-                        width: 200,
-                      )),
+                  child: Image.asset(
+                    widget.image,
+                    width: 200,
+                  ),
                 );
               },
             );
