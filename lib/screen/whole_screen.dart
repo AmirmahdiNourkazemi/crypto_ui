@@ -13,7 +13,7 @@ class WholeScreen extends StatefulWidget {
 }
 
 class _WholeScreenState extends State<WholeScreen> {
-   late ScrollController controller;
+  late ScrollController controller;
   @override
   void initState() {
     controller = ScrollController();
@@ -25,12 +25,17 @@ class _WholeScreenState extends State<WholeScreen> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
+      controller: controller,
       children: [
         FirstSection(),
         SecondScreen(),
+        SizedBox(
+          height: 900,
+        )
       ],
     );
   }

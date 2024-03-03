@@ -1,5 +1,6 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/screen/widget/image_reveal.dart';
 import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,7 @@ class _SecondScreenState extends State<SecondScreen>
           child: BlocBuilder<DisplayOffset, ScrollOffset>(
             buildWhen: (previous, current) {
               if ((current.scrollOffsetValue >= 900 &&
-                      current.scrollOffsetValue <= 1300) ||
+                      current.scrollOffsetValue <= 1500) ||
                   controller.isAnimating) {
                 return true;
               } else {
@@ -53,7 +54,7 @@ class _SecondScreenState extends State<SecondScreen>
               }
             },
             builder: (context, state) {
-              if (state.scrollOffsetValue > 1100.0) {
+              if (state.scrollOffsetValue > 900.0) {
                 controller.forward();
               } else {
                 controller.reverse();
@@ -61,22 +62,10 @@ class _SecondScreenState extends State<SecondScreen>
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Image.asset(
-                    'assets/images/Logo1.png',
-                    width: 200,
-                  ),
-                  Image.asset(
-                    'assets/images/Logo2.png',
-                    width: 200,
-                  ),
-                  Image.asset(
-                    'assets/images/Logo3.png',
-                    width: 200,
-                  ),
-                  Image.asset(
-                    'assets/images/Logo4.png',
-                    width: 200,
-                  ),
+                  ImageReveal('assets/images/Logo1.png'),
+                  ImageReveal('assets/images/Logo2.png'),
+                  ImageReveal('assets/images/Logo3.png'),
+                  ImageReveal('assets/images/Logo4.png'),
                 ],
               );
             },
