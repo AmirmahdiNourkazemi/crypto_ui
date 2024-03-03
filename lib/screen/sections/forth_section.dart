@@ -34,6 +34,7 @@ class _ForthSectionState extends State<ForthSection>
   void dispose() {
     // TODO: implement dispose
     controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,7 +53,6 @@ class _ForthSectionState extends State<ForthSection>
           },
           builder: (context, state) {
             if (state.scrollOffsetValue > 2200.0) {
-              print(state.scrollOffsetValue);
               controller.forward();
             } else {
               controller.reverse();
