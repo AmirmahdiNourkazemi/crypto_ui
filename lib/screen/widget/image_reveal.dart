@@ -78,7 +78,7 @@ class _ImageRevealState extends State<ImageReveal>
           buildWhen: (previous, current) {
             //print(current.scrollOffsetValue);
             if ((current.scrollOffsetValue >= 920 &&
-                    current.scrollOffsetValue <= 1950) ||
+                    current.scrollOffsetValue <= 1200) ||
                 controller.isAnimating) {
               return true;
             } else {
@@ -89,23 +89,26 @@ class _ImageRevealState extends State<ImageReveal>
             if (state.scrollOffsetValue >= (1000)) {
               controller.forward();
             } else {
+              // print('inside reverse');
+
               controller.reverse();
             }
             return AnimatedBuilder(
-                animation: imageOpacity,
-                builder: (context, child) {
-                  return AnimatedScale(
-                    duration: const Duration(milliseconds: 100),
-                    scale: imageOpacity.value,
-                    curve: Curves.easeOutSine,
-                    child: FadeTransition(
-                        opacity: imageOpacity,
-                        child: Image.asset(
-                          widget.image,
-                          width: 200,
-                        )),
-                  );
-                });
+              animation: imageOpacity,
+              builder: (context, child) {
+                return ScaleTransition(
+                  //duration: const Duration(milliseconds: 100),
+                  scale: imageOpacity,
+                  //curve: Curves.easeOutSine,
+                  child: FadeTransition(
+                      opacity: imageOpacity,
+                      child: Image.asset(
+                        widget.image,
+                        width: 200,
+                      )),
+                );
+              },
+            );
           },
         ),
       ),
