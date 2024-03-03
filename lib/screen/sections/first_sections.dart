@@ -48,6 +48,7 @@ class _FirstSectionState extends State<FirstSection>
   void dispose() {
     // TODO: implement dispose
     controller.dispose();
+    super.dispose();
   }
 
   @override

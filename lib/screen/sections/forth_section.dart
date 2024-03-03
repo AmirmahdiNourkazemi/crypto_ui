@@ -1,5 +1,7 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/model/items.dart';
+import 'package:crypto_ui_web/screen/widget/item_card.dart';
 import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,13 +31,19 @@ class _ForthSectionState extends State<ForthSection>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         BlocBuilder<DisplayOffset, ScrollOffset>(
           buildWhen: (previous, current) {
-            if ((current.scrollOffsetValue >= 1000 &&
-                    current.scrollOffsetValue <= 1300) ||
+            if ((current.scrollOffsetValue >= 1500 &&
+                    current.scrollOffsetValue <= 2600) ||
                 controller.isAnimating) {
               return true;
             } else {
@@ -43,7 +51,8 @@ class _ForthSectionState extends State<ForthSection>
             }
           },
           builder: (context, state) {
-            if (state.scrollOffsetValue > 1400.0) {
+            if (state.scrollOffsetValue > 2200.0) {
+              print(state.scrollOffsetValue);
               controller.forward();
             } else {
               controller.reverse();
@@ -76,6 +85,19 @@ class _ForthSectionState extends State<ForthSection>
                     ),
                   ),
                 ),
+                Wrap(
+                  runAlignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: items
+                      .map(
+                        (item) => ItemCard(
+                          image: item.image,
+                          title: item.title,
+                          subtitle: item.subtitle,
+                        ),
+                      )
+                      .toList(),
+                )
               ],
             );
           },

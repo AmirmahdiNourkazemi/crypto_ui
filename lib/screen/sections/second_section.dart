@@ -31,6 +31,7 @@ class _SecondScreenState extends State<SecondScreen>
   void dispose() {
     // TODO: implement dispose
     controller.dispose();
+    super.dispose();
   }
 
   late AnimationController controller;

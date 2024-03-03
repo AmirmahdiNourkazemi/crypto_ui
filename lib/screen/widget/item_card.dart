@@ -65,12 +65,21 @@ class _ItemCardState extends State<ItemCard>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
+      height: 345,
+      width: 400,
       child: BlocBuilder<DisplayOffset, ScrollOffset>(
         buildWhen: (previous, current) {
-          if ((current.scrollOffsetValue >= 1000 &&
-                  current.scrollOffsetValue <= 1950) ||
+          if ((current.scrollOffsetValue >= 2000 &&
+                  current.scrollOffsetValue <= 2950) ||
               controller.isAnimating) {
             return true;
           } else {
@@ -78,7 +87,7 @@ class _ItemCardState extends State<ItemCard>
           }
         },
         builder: (context, state) {
-          if (state.scrollOffsetValue >= (1450)) {
+          if (state.scrollOffsetValue >= (2400)) {
             controller.forward();
           } else {
             controller.reverse();
@@ -116,25 +125,31 @@ class _ItemCardState extends State<ItemCard>
                     Flexible(
                         child: Column(
                       children: [
-                        Text(
-                          widget.title,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'CH',
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
+                        FadeTransition(
+                          opacity: headingTextOpacity,
+                          child: Text(
+                            widget.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'CH',
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          widget.subtitle,
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontFamily: 'CH',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w200,
+                        FadeTransition(
+                          opacity: descriptionOpacity,
+                          child: Text(
+                            widget.subtitle,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontFamily: 'CH',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w200,
+                            ),
                           ),
                         )
                       ],
