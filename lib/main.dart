@@ -1,6 +1,8 @@
+import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
 import 'package:crypto_ui_web/screen/whole_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -119,8 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      backgroundColor: Colors.white,
-      body: WholeScreen(),
+      backgroundColor: AppColors.scaffoldColor,
+      body: BlocProvider(
+        create: (context) => DisplayOffset(ScrollOffset(scrollOffsetValue: 0)),
+        child: const WholeScreen(),
+      ),
     );
   }
 }

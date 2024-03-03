@@ -1,5 +1,8 @@
+import 'package:crypto_ui_web/screen/sections/second_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../bloc/screen_offset.dart';
 import 'sections/first_sections.dart';
 
 class WholeScreen extends StatefulWidget {
@@ -10,10 +13,25 @@ class WholeScreen extends StatefulWidget {
 }
 
 class _WholeScreenState extends State<WholeScreen> {
+   late ScrollController controller;
+  @override
+  void initState() {
+    controller = ScrollController();
+
+    controller.addListener(() {
+      context.read<DisplayOffset>().changeDisplayOffset(
+          (MediaQuery.of(context).size.height + controller.position.pixels)
+              .toInt());
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [FirstSection()],
+      children: [
+        FirstSection(),
+        SecondScreen(),
+      ],
     );
   }
 }

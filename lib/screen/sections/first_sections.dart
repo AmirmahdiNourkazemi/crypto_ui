@@ -30,7 +30,7 @@ class _FirstSectionState extends State<FirstSection>
       ),
     );
 
-    textRevealAnimation = Tween<double>(begin: 10.0, end: 0.0).animate(
+    textRevealAnimation = Tween<double>(begin: 60.0, end: 0.0).animate(
         CurvedAnimation(
             parent: controller,
             curve: const Interval(0.0, 0.2, curve: Curves.easeOut)));
