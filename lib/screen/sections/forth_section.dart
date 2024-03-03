@@ -88,6 +88,8 @@ class _ForthSectionState extends State<ForthSection>
                 Wrap(
                   runAlignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 20,
+                  runSpacing: 4,
                   children: items
                       .map(
                         (item) => ItemCard(

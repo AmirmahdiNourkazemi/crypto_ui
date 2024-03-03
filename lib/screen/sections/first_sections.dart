@@ -119,7 +119,7 @@ class _FirstSectionState extends State<FirstSection>
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(200, 50),
+                            fixedSize: const Size(150, 50),
                             backgroundColor: AppColors.secondaryColor),
                         child: const Text(
                           'Get Started',
@@ -137,7 +137,7 @@ class _FirstSectionState extends State<FirstSection>
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(200, 50),
+                            fixedSize: const Size(150, 50),
                             backgroundColor: Colors.transparent,
                             side: const BorderSide(
                                 color: AppColors.secondaryColor)),

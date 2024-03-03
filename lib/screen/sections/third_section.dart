@@ -48,7 +48,7 @@ class _ThirdSectionState extends State<ThirdSection>
             parent: controller,
             curve: const Interval(0.50, 0.80, curve: Curves.easeOut)));
     offsetImage =
-        Tween<Offset>(begin: const Offset(-10, 0), end: const Offset(0, 0))
+        Tween<Offset>(begin: const Offset(-1, 0), end: const Offset(0, 0))
             .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
     transform =
         Tween<Offset>(begin: const Offset(10, 0), end: const Offset(0, 0))
@@ -66,20 +66,21 @@ class _ThirdSectionState extends State<ThirdSection>
   void dispose() {
     // TODO: implement dispose
     controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 1000 || controller.isAnimating) {
+        if (current.scrollOffsetValue > 1200 || controller.isAnimating) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 1000) {
+        if (state.scrollOffsetValue > 1200) {
           controller.forward();
         } else {
           controller.reverse();
@@ -90,7 +91,7 @@ class _ThirdSectionState extends State<ThirdSection>
               animation: offsetImage,
               builder: (context, child) {
                 if (state.scrollOffsetValue > 800.0 &&
-                    state.scrollOffsetValue > 1200.0) {
+                    state.scrollOffsetValue > 1300.0) {
                   // print('inside forward:${state.scrollOffsetValue}');
                   controller.forward();
                 } else {
