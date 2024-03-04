@@ -1,3 +1,4 @@
+import 'package:crypto_ui_web/screen/sections/fifth_section.dart';
 import 'package:crypto_ui_web/screen/sections/forth_section.dart';
 import 'package:crypto_ui_web/screen/sections/second_section.dart';
 import 'package:crypto_ui_web/screen/sections/third_section.dart';
@@ -39,7 +40,14 @@ class _WholeScreenState extends State<WholeScreen> {
         SizedBox(
           height: 100.0,
         ),
-        ForthSection()
+        ForthSection(),
+        SizedBox(
+          height: 50.0,
+        ),
+        FifthSection(),
+        SizedBox(
+          height: 100.0,
+        ),
       ],
     );
   }

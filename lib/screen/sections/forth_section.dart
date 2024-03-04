@@ -52,11 +52,11 @@ class _ForthSectionState extends State<ForthSection>
             }
           },
           builder: (context, state) {
-            if (state.scrollOffsetValue > 2200.0) {
-              controller.forward();
-            } else {
-              controller.reverse();
-            }
+              if (state.scrollOffsetValue > 2200.0) {
+                controller.forward();
+              } else {
+                controller.reverse();
+              }
             return Column(
               children: [
                 TextReveal(
@@ -88,8 +88,8 @@ class _ForthSectionState extends State<ForthSection>
                 Wrap(
                   runAlignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 20,
-                  runSpacing: 4,
+                  spacing: 100,
+                  runSpacing: 70,
                   children: items
                       .map(
                         (item) => ItemCard(
