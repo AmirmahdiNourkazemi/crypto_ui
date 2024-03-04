@@ -82,7 +82,7 @@ class _FifthSectionState extends State<FifthSection>
       },
       builder: (context, state) {
         //print(state.scrollOffsetValue);
-        if (state.scrollOffsetValue > 2800.0) {
+        if (state.scrollOffsetValue > 3200.0) {
           //print(state.scrollOffsetValue);
           controller.forward();
         } else {
@@ -92,59 +92,85 @@ class _FifthSectionState extends State<FifthSection>
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              flex: 2,
               child: AnimatedBuilder(
                 animation: textRevealAnimation,
                 builder: (context, child) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      TextReveal(
-                        maxHeight: 200,
-                        controller: controller,
-                        child: const Text(
-                          'PRICE',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'CH',
-                            fontWeight: FontWeight.normal,
-                            color: AppColors.secondaryColor,
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 90),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextReveal(
+                          maxHeight: 200,
+                          controller: controller,
+                          child: const Text(
+                            'PRICE',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'CH',
+                              fontWeight: FontWeight.normal,
+                              color: AppColors.secondaryColor,
+                            ),
                           ),
                         ),
-                      ),
-                      TextReveal(
-                        maxHeight: 70,
-                        controller: controller,
-                        child: const Text(
-                          'Flexible Pricing ',
-                          style: TextStyle(
-                            fontSize: 38,
-                            fontFamily: 'CH',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        TextReveal(
+                          maxHeight: 70,
+                          controller: controller,
+                          child: const Text(
+                            'Flexible Pricing ',
+                            style: TextStyle(
+                              fontSize: 38,
+                              fontFamily: 'CH',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                      TextReveal(
-                        maxHeight: 70,
-                        controller: controller,
-                        child: const Text(
-                          'for Every Project',
-                          style: TextStyle(
-                            fontSize: 38,
-                            fontFamily: 'CH',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        TextReveal(
+                          maxHeight: 70,
+                          controller: controller,
+                          child: const Text(
+                            'for Every Project',
+                            style: TextStyle(
+                              fontSize: 38,
+                              fontFamily: 'CH',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      )
-                    ],
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        TextReveal(
+                          maxHeight: 50,
+                          controller: controller,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(150, 50),
+                                backgroundColor: Colors.transparent,
+                                side: const BorderSide(
+                                    color: AppColors.secondaryColor)),
+                            child: const Text(
+                              'Learn more',
+                              style: TextStyle(
+                                fontFamily: 'CH',
+                                fontSize: 13,
+                                color: AppColors.secondaryColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
             ),
             Expanded(
-              flex: 2,
               child: Row(
                 children: [
                   planCard(planAnimation, Colors.white, AppColors.scaffoldColor,
