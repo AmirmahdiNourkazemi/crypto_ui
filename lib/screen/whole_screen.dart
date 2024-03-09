@@ -50,6 +50,9 @@ class _WholeScreenState extends State<WholeScreen> {
           height: 100.0,
         ),
         SixthSection(),
+        SizedBox(
+          height: 200.0,
+        ),
       ],
     );
   }

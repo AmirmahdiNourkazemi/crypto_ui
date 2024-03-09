@@ -193,17 +193,24 @@ class _NewsCardState extends State<NewsCard>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue > 3400) {
+        if (current.scrollOffsetValue >= 3800) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 3600) {
+        if (state.scrollOffsetValue >= 3800) {
           controller.forward();
         } else {
           controller.reverse();
@@ -211,22 +218,18 @@ class _NewsCardState extends State<NewsCard>
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: AnimatedCrossFade(
-            crossFadeState: state.scrollOffsetValue >= 3600
+            crossFadeState: state.scrollOffsetValue >= 3900
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
-            duration: const Duration(milliseconds: 575),
+            duration: const Duration(milliseconds: 1000),
             alignment: Alignment.center,
-            reverseDuration: const Duration(milliseconds: 375),
-            firstCurve: Curves.easeOut,
-            secondCurve: Curves.easeOut,
+            reverseDuration: const Duration(milliseconds: 1000),
+            firstCurve: Curves.easeInOut,
+            secondCurve: Curves.linear,
             firstChild: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: const Color(0xff2A2A2A),
-                border: Border.all(
-                  width: 1,
-                  color: AppColors.secondaryColor,
-                ),
               ),
             ),
             secondChild: Container(

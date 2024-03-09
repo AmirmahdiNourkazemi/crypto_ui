@@ -81,7 +81,7 @@ class _SixthSectionState extends State<SixthSection>
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 SizedBox(
                   height: 400,
