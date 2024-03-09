@@ -83,7 +83,7 @@ class _SeventhSectionState extends State<SeventhSection>
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3400 &&
+        if (state.scrollOffsetValue >= 3500 &&
             state.scrollOffsetValue <= 3900) {
           controller.forward();
         } else {
@@ -92,98 +92,120 @@ class _SeventhSectionState extends State<SeventhSection>
         return AnimatedBuilder(
           animation: textRevealAnimation,
           builder: (context, child) {
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              height: 350,
-              decoration: const BoxDecoration(
-                color: AppColors.secondaryColor,
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextReveal(
-                      controller: controller,
-                      maxHeight: 80,
-                      child: const Text(
-                        'Start Your Crypto Odyssey With Us',
-                        style: TextStyle(
-                          fontFamily: 'CH',
-                          color: Color(0xff2A2A2A),
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextReveal(
-                      maxHeight: 100,
-                      controller: controller,
-                      child: const Text(
-                        'Lorem ipsum dolor sit amet consectetur. Duis morbi scelerisque \nlectus sodales rhoncus.',
-                        style: TextStyle(
-                          fontFamily: 'CH',
-                          color: Color(0xff2A2A2A),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 350,
+                  decoration: const BoxDecoration(
+                    color: AppColors.secondaryColor,
+                  ),
+                ),
+                Positioned(
+                  child: Center(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextReveal(
-                            maxHeight: 80,
-                            controller: controller,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(150, 50),
-                                backgroundColor: AppColors.darkColor,
-                              ),
-                              child: const Text(
-                                'Get Started',
-                                style: TextStyle(
-                                  fontFamily: 'CH',
-                                  fontSize: 13,
-                                  color: AppColors.secondaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            )),
+                          controller: controller,
+                          maxHeight: 80,
+                          child: const Text(
+                            'Start Your Crypto Odyssey With Us',
+                            style: TextStyle(
+                              fontFamily: 'CH',
+                              color: Color(0xff2A2A2A),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                         const SizedBox(
-                          width: 10,
+                          height: 10,
                         ),
                         TextReveal(
-                            maxHeight: 80,
-                            controller: controller,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  fixedSize: const Size(150, 50),
-                                  backgroundColor: AppColors.secondaryColor,
-                                  side: const BorderSide(
-                                      color: AppColors.darkColor)),
-                              child: const Text(
-                                'Learn more',
-                                style: TextStyle(
-                                  fontFamily: 'CH',
-                                  fontSize: 13,
-                                  color: AppColors.darkColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ))
+                          maxHeight: 100,
+                          controller: controller,
+                          child: const Text(
+                            'Lorem ipsum dolor sit amet consectetur. Duis morbi scelerisque \nlectus sodales rhoncus.',
+                            style: TextStyle(
+                              fontFamily: 'CH',
+                              color: Color(0xff2A2A2A),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextReveal(
+                                maxHeight: 80,
+                                controller: controller,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(150, 50),
+                                    backgroundColor: AppColors.darkColor,
+                                  ),
+                                  child: const Text(
+                                    'Get Started',
+                                    style: TextStyle(
+                                      fontFamily: 'CH',
+                                      fontSize: 13,
+                                      color: AppColors.secondaryColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                )),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            TextReveal(
+                                maxHeight: 80,
+                                controller: controller,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                      fixedSize: const Size(150, 50),
+                                      backgroundColor: AppColors.secondaryColor,
+                                      side: const BorderSide(
+                                          color: AppColors.darkColor)),
+                                  child: const Text(
+                                    'Learn more',
+                                    style: TextStyle(
+                                      fontFamily: 'CH',
+                                      fontSize: 13,
+                                      color: AppColors.darkColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
-              ),
+                AnimatedBuilder(
+                  animation: transform,
+                  builder: (context, child) {
+                    return AnimatedPositioned(
+                      curve: Curves.easeInCubic,
+                      top: (state.scrollOffsetValue > 3600) ? 10 : 300,
+                      right: (state.scrollOffsetValue > 3600) ? 250 : 200,
+                      duration: const Duration(milliseconds: 1300),
+                      child: Image.asset(
+                        'assets/images/earth1.png',
+                        height: 100,
+                      ),
+                    );
+                  },
+                )
+              ],
             );
           },
         );
