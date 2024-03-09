@@ -1,6 +1,7 @@
 import 'package:crypto_ui_web/screen/sections/fifth_section.dart';
 import 'package:crypto_ui_web/screen/sections/forth_section.dart';
 import 'package:crypto_ui_web/screen/sections/second_section.dart';
+import 'package:crypto_ui_web/screen/sections/seventh_section.dart';
 import 'package:crypto_ui_web/screen/sections/third_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,6 +47,10 @@ class _WholeScreenState extends State<WholeScreen> {
           height: 50.0,
         ),
         FifthSection(),
+        SizedBox(
+          height: 50.0,
+        ),
+        SeventhSection(),
         SizedBox(
           height: 100.0,
         ),
