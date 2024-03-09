@@ -83,8 +83,8 @@ class _SeventhSectionState extends State<SeventhSection>
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3500 &&
-            state.scrollOffsetValue <= 3900) {
+        if (state.scrollOffsetValue >= 3550 &&
+            state.scrollOffsetValue <= 4200) {
           controller.forward();
         } else {
           controller.reverse();
@@ -197,9 +197,54 @@ class _SeventhSectionState extends State<SeventhSection>
                       curve: Curves.easeInCubic,
                       top: (state.scrollOffsetValue > 3600) ? 10 : 300,
                       right: (state.scrollOffsetValue > 3600) ? 250 : 200,
-                      duration: const Duration(milliseconds: 1300),
+                      duration: const Duration(milliseconds: 900),
                       child: Image.asset(
                         'assets/images/earth1.png',
+                        height: 100,
+                      ),
+                    );
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: transform,
+                  builder: (context, child) {
+                    return AnimatedPositioned(
+                      curve: Curves.easeInOutQuart,
+                      top: (state.scrollOffsetValue > 3700) ? 200 : 10,
+                      right: (state.scrollOffsetValue > 3700) ? 100 : 20,
+                      duration: const Duration(milliseconds: 1300),
+                      child: Image.asset(
+                        'assets/images/earth2.png',
+                        height: 100,
+                      ),
+                    );
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: transform,
+                  builder: (context, child) {
+                    return AnimatedPositioned(
+                      curve: Curves.easeOutCirc,
+                      bottom: (state.scrollOffsetValue > 3700) ? 240 : 0,
+                      left: (state.scrollOffsetValue > 3700) ? 100 : 250,
+                      duration: const Duration(milliseconds: 1300),
+                      child: Image.asset(
+                        'assets/images/earth3.png',
+                        height: 100,
+                      ),
+                    );
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: transform,
+                  builder: (context, child) {
+                    return AnimatedPositioned(
+                      curve: Curves.easeOutCirc,
+                      bottom: (state.scrollOffsetValue > 3730) ? 0 : 0,
+                      left: (state.scrollOffsetValue > 3730) ? 20 : 0,
+                      duration: const Duration(milliseconds: 1600),
+                      child: Image.asset(
+                        'assets/images/earth4.png',
                         height: 100,
                       ),
                     );
