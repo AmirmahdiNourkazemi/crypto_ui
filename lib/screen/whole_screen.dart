@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/screen_offset.dart';
 import 'sections/first_sections.dart';
+import 'sections/sixth_section.dart';
 
 class WholeScreen extends StatefulWidget {
   const WholeScreen({super.key});
@@ -48,6 +49,7 @@ class _WholeScreenState extends State<WholeScreen> {
         SizedBox(
           height: 100.0,
         ),
+        SixthSection(),
       ],
     );
   }

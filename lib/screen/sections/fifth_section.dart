@@ -173,8 +173,14 @@ class _FifthSectionState extends State<FifthSection>
             Expanded(
               child: Row(
                 children: [
-                  planCard(planAnimation, Colors.white, AppColors.scaffoldColor,
-                      AppColors.secondaryColor, 'Basic Edition', '\$600 / prj'),
+                  planCard(
+                    planAnimation,
+                    Colors.white,
+                    AppColors.scaffoldColor,
+                    AppColors.secondaryColor,
+                    'Basic Edition',
+                    '\$600 / prj',
+                  ),
                   const SizedBox(
                     width: 20,
                   ),
