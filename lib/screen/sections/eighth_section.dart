@@ -1,4 +1,5 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
+import 'package:crypto_ui_web/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -72,7 +73,7 @@ class _EighthSectionState extends State<EighthSection>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
         if ((current.scrollOffsetValue > 3500 &&
-                current.scrollOffsetValue < 4000) ||
+                current.scrollOffsetValue < 4200) ||
             controller.isAnimating) {
           return true;
         } else {
@@ -89,17 +90,31 @@ class _EighthSectionState extends State<EighthSection>
         return Stack(
           children: [
             Container(
-              height: 735,
+              height: 400,
             ),
             AnimatedPositioned(
-              top: state.scrollOffsetValue > 3800 ? 5 : 300,
-              left: state.scrollOffsetValue > 3800 ? 200 : 0,
-              duration: const Duration(microseconds: 1000),
+              curve: Curves.easeOutCubic,
+              top: state.scrollOffsetValue > 4050 ? 100 : 5,
+              left: state.scrollOffsetValue > 4050 ? 200 : 0,
+              duration: const Duration(milliseconds: 1300),
               child: AnimatedScale(
-                scale: state.scrollOffsetValue > 3800 ? 1 : 0.3,
-                duration: const Duration(milliseconds: 1000),
-                child: CircleAvatar(
-                  child: Image.asset('assets/images/profile.jpg'),
+                scale: state.scrollOffsetValue > 4000 ? 1 : 0.5,
+                duration: const Duration(milliseconds: 1300),
+                child: Container(
+                  decoration:
+                      const BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                    BoxShadow(
+                        color: AppColors.secondaryColor,
+                        blurRadius: 30,
+                        blurStyle: BlurStyle.outer)
+                  ]),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(200),
+                    child: Image.asset(
+                      'assets/images/profile.jpg',
+                      height: 300,
+                    ),
+                  ),
                 ),
               ),
             )
