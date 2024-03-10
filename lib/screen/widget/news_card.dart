@@ -203,14 +203,14 @@ class _NewsCardState extends State<NewsCard>
   Widget build(BuildContext context) {
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if (current.scrollOffsetValue >= 3800) {
+        if (current.scrollOffsetValue >= 4200) {
           return true;
         } else {
           return false;
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 3800) {
+        if (state.scrollOffsetValue >= 4300) {
           controller.forward();
         } else {
           controller.reverse();

@@ -32,13 +32,20 @@ class _SixthSectionState extends State<SixthSection>
     super.initState();
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Column(
       children: [
         BlocBuilder<DisplayOffset, ScrollOffset>(
           buildWhen: (previous, current) {
             if ((current.scrollOffsetValue >= 2800 &&
-                    current.scrollOffsetValue <= 3600) ||
+                    current.scrollOffsetValue <= 4500) ||
                 controller.isAnimating) {
               return true;
             } else {
@@ -46,7 +53,7 @@ class _SixthSectionState extends State<SixthSection>
             }
           },
           builder: (context, state) {
-            if (state.scrollOffsetValue > 3400.0) {
+            if (state.scrollOffsetValue > 4000.0) {
               //print(state.scrollOffsetValue);
               controller.forward();
             } else {
