@@ -16,6 +16,7 @@ class _EighthSectionState extends State<EighthSection>
   late AnimationController controller;
   late Animation<double> imageRevealAnimation;
   late Animation<double> textRevealAnimation;
+  late Animation<double> textRevealEndAnimation;
   late Animation<double> subTextOpacityAnimation;
   late Animation<double> subImageRevealAnimation;
   late Animation<Offset> offsetImage;
@@ -43,6 +44,10 @@ class _EighthSectionState extends State<EighthSection>
             parent: controller,
             curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
 
+    textRevealEndAnimation = Tween<double>(begin: 0.0, end: 100.0).animate(
+        CurvedAnimation(
+            parent: controller,
+            curve: const Interval(0.30, 0.60, curve: Curves.easeOut)));
     subTextOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: controller,
@@ -74,7 +79,7 @@ class _EighthSectionState extends State<EighthSection>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
         if ((current.scrollOffsetValue > 3500 &&
-                current.scrollOffsetValue < 4200) ||
+                current.scrollOffsetValue < 4400) ||
             controller.isAnimating) {
           return true;
         } else {
@@ -83,7 +88,7 @@ class _EighthSectionState extends State<EighthSection>
       },
       builder: (context, state) {
         if (state.scrollOffsetValue >= 3750 &&
-            state.scrollOffsetValue <= 4200) {
+            state.scrollOffsetValue <= 4400) {
           controller.forward();
         } else {
           controller.reverse();
@@ -107,7 +112,7 @@ class _EighthSectionState extends State<EighthSection>
                     boxShadow: [
                       BoxShadow(
                           color: AppColors.secondaryColor,
-                          blurRadius: 20,
+                          blurRadius: 30,
                           blurStyle: BlurStyle.outer)
                     ],
                   ),
@@ -124,7 +129,7 @@ class _EighthSectionState extends State<EighthSection>
             AnimatedPositioned(
               duration: const Duration(milliseconds: 1400),
               right: state.scrollOffsetValue > 4050
-                  ? MediaQuery.of(context).size.width * 0.3
+                  ? MediaQuery.of(context).size.width * 0.29
                   : 0,
               top: state.scrollOffsetValue > 4050 ? 120 : 5,
               child: Visibility(
@@ -136,9 +141,47 @@ class _EighthSectionState extends State<EighthSection>
                     'Amirmahdi Nourkazemi',
                     style: TextStyle(
                       fontFamily: 'CH',
-                      fontSize: 20,
+                      fontSize: 25,
                       color: AppColors.secondaryColor,
                       fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: MediaQuery.of(context).size.width * 0.5,
+              top: 160,
+              child: AnimatedOpacity(
+                curve: Curves.easeInCubic,
+                opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
+                duration: const Duration(milliseconds: 2000),
+                child: const Text(
+                  'Flutter developer',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'CH',
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal),
+                ),
+              ),
+            ),
+            Positioned(
+              left: MediaQuery.of(context).size.width * 0.50,
+              top: 200,
+              child: AnimatedOpacity(
+                curve: Curves.easeInCubic,
+                opacity: state.scrollOffsetValue > 4100 ? 1 : 0.1,
+                duration: const Duration(milliseconds: 2000),
+                child: const SizedBox(
+                  // width: 400,
+                  child: Text(
+                    'Enthusiastic Flutter developer dedicated to creating top-notch apps and web \nsolutions. Skilled in Flutter web for smooth web application development, \nwith a talent for crafting efficient admin panels. \nRecognized for working collaboratively and solving challenges effectively \nwithin a team environment.',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'CH',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ),
