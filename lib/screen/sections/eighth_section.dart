@@ -1,5 +1,6 @@
 import 'package:crypto_ui_web/bloc/screen_offset.dart';
 import 'package:crypto_ui_web/constant/color.dart';
+import 'package:crypto_ui_web/screen/widget/text_reveal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -101,18 +102,43 @@ class _EighthSectionState extends State<EighthSection>
                 scale: state.scrollOffsetValue > 4000 ? 1 : 0.5,
                 duration: const Duration(milliseconds: 1300),
                 child: Container(
-                  decoration:
-                      const BoxDecoration(shape: BoxShape.circle, boxShadow: [
-                    BoxShadow(
-                        color: AppColors.secondaryColor,
-                        blurRadius: 30,
-                        blurStyle: BlurStyle.outer)
-                  ]),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: AppColors.secondaryColor,
+                          blurRadius: 20,
+                          blurStyle: BlurStyle.outer)
+                    ],
+                  ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(200),
                     child: Image.asset(
                       'assets/images/profile.jpg',
                       height: 300,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 1400),
+              right: state.scrollOffsetValue > 4050
+                  ? MediaQuery.of(context).size.width * 0.3
+                  : 0,
+              top: state.scrollOffsetValue > 4050 ? 120 : 5,
+              child: Visibility(
+                visible: state.scrollOffsetValue > 4050,
+                child: TextReveal(
+                  maxHeight: 100,
+                  controller: controller,
+                  child: const Text(
+                    'Amirmahdi Nourkazemi',
+                    style: TextStyle(
+                      fontFamily: 'CH',
+                      fontSize: 20,
+                      color: AppColors.secondaryColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
