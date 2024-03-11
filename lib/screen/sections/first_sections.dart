@@ -219,7 +219,15 @@ class _FirstPageImageState extends State<FirstPageImage>
               child: Container(
                 height: _animation.value,
                 width: double.infinity,
-                color: Colors.white,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.scaffoldColor,
+                      AppColors.secondaryColor,
+                    ],
+                    tileMode: TileMode.mirror,
+                  ),
+                ),
               ),
             ),
           ],

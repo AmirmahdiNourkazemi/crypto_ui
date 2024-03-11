@@ -84,6 +84,9 @@ class _NinthSectionState extends State<NinthSection> {
                   ],
                 )
               ],
+            ),
+            const SizedBox(
+              height: 30,
             )
           ],
         ),

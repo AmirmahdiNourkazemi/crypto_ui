@@ -38,32 +38,32 @@ class _WholeScreenState extends State<WholeScreen> {
     return ListView(
       controller: controller,
       children: const [
-        // FirstSection(),
-        // SecondScreen(),
-        // ThirdSection(),
-        // SizedBox(
-        //   height: 100.0,
-        // ),
-        // ForthSection(),
-        // SizedBox(
-        //   height: 50.0,
-        // ),
-        // FifthSection(),
-        // SizedBox(
-        //   height: 50.0,
-        // ),
-        // SeventhSection(),
-        // SizedBox(
-        //   height: 100.0,
-        // ),
-        // EighthSection(),
-        // SizedBox(
-        //   height: 100.0,
-        // ),
-        // SixthSection(),
-        // SizedBox(
-        //   height: 50.0,
-        // ),
+        FirstSection(),
+        SecondScreen(),
+        ThirdSection(),
+        SizedBox(
+          height: 100.0,
+        ),
+        ForthSection(),
+        SizedBox(
+          height: 50.0,
+        ),
+        FifthSection(),
+        SizedBox(
+          height: 50.0,
+        ),
+        SeventhSection(),
+        SizedBox(
+          height: 100.0,
+        ),
+        EighthSection(),
+        SizedBox(
+          height: 100.0,
+        ),
+        SixthSection(),
+        SizedBox(
+          height: 100.0,
+        ),
         NinthSection(),
       ],
     );
