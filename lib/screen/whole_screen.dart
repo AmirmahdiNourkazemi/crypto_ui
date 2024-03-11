@@ -1,6 +1,7 @@
 import 'package:crypto_ui_web/screen/sections/eighth_section.dart';
 import 'package:crypto_ui_web/screen/sections/fifth_section.dart';
 import 'package:crypto_ui_web/screen/sections/forth_section.dart';
+import 'package:crypto_ui_web/screen/sections/ninth_section.dart';
 import 'package:crypto_ui_web/screen/sections/second_section.dart';
 import 'package:crypto_ui_web/screen/sections/seventh_section.dart';
 import 'package:crypto_ui_web/screen/sections/third_section.dart';
@@ -37,32 +38,33 @@ class _WholeScreenState extends State<WholeScreen> {
     return ListView(
       controller: controller,
       children: const [
-        FirstSection(),
-        SecondScreen(),
-        ThirdSection(),
-        SizedBox(
-          height: 100.0,
-        ),
-        ForthSection(),
-        SizedBox(
-          height: 50.0,
-        ),
-        FifthSection(),
-        SizedBox(
-          height: 50.0,
-        ),
-        SeventhSection(),
-        SizedBox(
-          height: 100.0,
-        ),
-        EighthSection(),
-        SizedBox(
-          height: 100.0,
-        ),
-        SixthSection(),
-        SizedBox(
-          height: 200.0,
-        ),
+        // FirstSection(),
+        // SecondScreen(),
+        // ThirdSection(),
+        // SizedBox(
+        //   height: 100.0,
+        // ),
+        // ForthSection(),
+        // SizedBox(
+        //   height: 50.0,
+        // ),
+        // FifthSection(),
+        // SizedBox(
+        //   height: 50.0,
+        // ),
+        // SeventhSection(),
+        // SizedBox(
+        //   height: 100.0,
+        // ),
+        // EighthSection(),
+        // SizedBox(
+        //   height: 100.0,
+        // ),
+        // SixthSection(),
+        // SizedBox(
+        //   height: 50.0,
+        // ),
+        NinthSection(),
       ],
     );
   }
