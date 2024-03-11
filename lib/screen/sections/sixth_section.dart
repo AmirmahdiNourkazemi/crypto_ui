@@ -53,7 +53,7 @@ class _SixthSectionState extends State<SixthSection>
             }
           },
           builder: (context, state) {
-            if (state.scrollOffsetValue > 4000.0) {
+            if (state.scrollOffsetValue > 4200.0) {
               //print(state.scrollOffsetValue);
               controller.forward();
             } else {

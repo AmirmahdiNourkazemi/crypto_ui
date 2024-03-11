@@ -210,7 +210,7 @@ class _NewsCardState extends State<NewsCard>
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue >= 4300) {
+        if (state.scrollOffsetValue >= 4600) {
           controller.forward();
         } else {
           controller.reverse();
@@ -218,7 +218,7 @@ class _NewsCardState extends State<NewsCard>
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: AnimatedCrossFade(
-            crossFadeState: state.scrollOffsetValue >= 3900
+            crossFadeState: state.scrollOffsetValue >= 4500
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
             duration: const Duration(milliseconds: 1000),
