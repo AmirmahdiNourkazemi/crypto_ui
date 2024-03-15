@@ -17,7 +17,7 @@ class _ImageRevealState extends State<ImageReveal>
   late AnimationController controller;
 
   late Animation<double> imageReveal;
-  late Animation<double> imageOpacity;
+  late Animation<double> imageScale;
   late Animation<double> headingTextOpacity;
   late Animation<double> subTextOpacity;
   late Animation<double> descriptionOpacity;
@@ -34,7 +34,7 @@ class _ImageRevealState extends State<ImageReveal>
             parent: controller,
             curve: const Interval(0.0, 0.50, curve: Curves.easeInOutCubic)));
 
-    imageOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    imageScale = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: controller,
         curve: const Interval(0.0, 0.5, curve: Curves.easeOut)));
 
@@ -57,6 +57,13 @@ class _ImageRevealState extends State<ImageReveal>
         parent: controller,
         curve: const Interval(0.8, 1.0, curve: Curves.easeOut)));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,10 +101,10 @@ class _ImageRevealState extends State<ImageReveal>
               controller.reverse();
             }
             return AnimatedBuilder(
-              animation: imageOpacity,
+              animation: imageScale,
               builder: (context, child) {
                 return ScaleTransition(
-                  scale: imageOpacity,
+                  scale: imageScale,
                   child: Image.asset(
                     widget.image,
                     width: 200,
