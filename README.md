@@ -19,7 +19,8 @@ This Flutter web application is designed to provide users with a sleek and inter
 - Cross Fade Animation: Smooth transition between different elements.
 - Position Animation: Elements move smoothly to their designated positions.
 - Slide Transition: Slides content in and out of view during navigation.
-
+## Video Demo
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7174017295793549312" height="685" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 ## GitHub Repository
 You can find the source code for this project on [GitHub](https://github.com/Amirmahdi1380).
 
