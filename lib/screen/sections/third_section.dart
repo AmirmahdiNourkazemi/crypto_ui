@@ -87,26 +87,14 @@ class _ThirdSectionState extends State<ThirdSection>
         }
         return Row(
           children: [
-            AnimatedBuilder(
-              animation: offsetImage,
-              builder: (context, child) {
-                if (state.scrollOffsetValue > 1300.0) {
-                  // print('inside forward:${state.scrollOffsetValue}');
-                  controller.forward();
-                } else {
-                  // print('inside reverse:${state.scrollOffsetValue}');
-                  controller.reverse();
-                }
-                return Flexible(
-                  flex: 1,
-                  child: SlideTransition(
-                    position: offsetImage,
-                    child: Image.asset(
-                      'assets/images/Frame 29.png',
-                    ),
-                  ),
-                );
-              },
+            Flexible(
+              flex: 1,
+              child: SlideTransition(
+                position: offsetImage,
+                child: Image.asset(
+                  'assets/images/Frame 29.png',
+                ),
+              ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.1,
